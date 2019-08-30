@@ -2,14 +2,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
 
-.title {
-  font-weight: bold;
-  font-size: 14px;
-  margin-right: 5px;
-}
+  .account-detail-title {
+    font-weight: bold;
+    font-size: 14px;
+    margin-right: 5px;
+  }
 
-.value {
-  font-size: 22px;
+  .account-detail-value {
+    font-size: 22px;
+  }
 }

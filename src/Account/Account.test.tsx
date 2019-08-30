@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AccountBalance from './AccountBalance';
+import Account from './Account';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<AccountBalance />, div);
+  ReactDOM.render(<Account />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

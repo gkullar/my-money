@@ -32,3 +32,16 @@ main {
   background-size: cover;
   box-shadow: inset 0 0 0 2000px rgba(20, 35, 60, 0.8);
 }
+
+.accounts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 100%;
+
+  .account {
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+}
