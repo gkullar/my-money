@@ -1,6 +1,7 @@
 import React from 'react';
-import logo from './_assets/logo.svg';
 import './App.scss';
+import logo from './_assets/logo.svg';
+import AccountBalance from './Account/AccountBalance/AccountBalance';
 
 function App() {
   return (
@@ -10,7 +11,10 @@ function App() {
         <h1>My Money</h1>
       </header>
       <main>
-        <p>Hello World!</p>
+        <AccountBalance
+          accountId="acc_00009Uiudfe6RpmqpOZ0Sn"
+          title="Main Account"
+        />
       </main>
       <footer>
         <p>Environment: {process.env.NODE_ENV}</p>
