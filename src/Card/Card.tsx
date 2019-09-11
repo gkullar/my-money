@@ -1,6 +1,8 @@
-import React from 'react';
-import './Card.scss';
+import React, { FunctionComponent } from 'react';
+import './card.scss';
 
-export default function Card(props: any) {
-  return <div className="card">{props.children}</div>;
-}
+const Card: FunctionComponent<{}> = ({ children }) => (
+  <div className="card">{children}</div>
+);
+
+export default Card;

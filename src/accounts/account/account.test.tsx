@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AccountDetail from './AccountDetail';
+import Account from './account';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<AccountDetail />, div);
+  ReactDOM.render(<Account />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

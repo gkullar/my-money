@@ -1,6 +1,6 @@
-import React from 'react';
-import './Spinner.scss';
+import React, { FunctionComponent } from 'react';
+import './spinner.scss';
 
-export default function Spinner() {
-  return <div className="spinner" />;
-}
+const Spinner: FunctionComponent<{}> = () => <div className="spinner" />;
+
+export default Spinner;

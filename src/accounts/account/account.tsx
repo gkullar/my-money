@@ -1,9 +1,9 @@
-import React from 'react';
-import './Account.scss';
-import AccountDetail from './AccountDetail/AccountDetail';
-import useFetch from '../_hooks/useFetch';
-import Card from '../Card/Card';
-import Spinner from '../Spinner/Spinner';
+import React, { FunctionComponent } from 'react';
+import './account.scss';
+import AccountDetail from '../account-detail/account-detail';
+import useFetch from '../../_utils/use-fetch';
+import Card from '../../card/card';
+import Spinner from '../../spinner/spinner';
 
 interface Props {
   id: string;
@@ -17,15 +17,15 @@ interface State {
   spend_today: number;
 }
 
-export default function Account(props: Props) {
+const Account: FunctionComponent<Props> = ({ id, title }) => {
   const { data, loading } = useFetch<State>(
-    `${process.env.REACT_APP_API_URL}/balance?account_id=${props.id}`
+    `${process.env.REACT_APP_API_URL}/balance?account_id=${id}`
   );
 
   return (
     <div className="account">
       <Card>
-        <h2 className="account-title">{props.title}</h2>
+        <h2 className="account-title">{title}</h2>
         <hr />
         {loading ? (
           <Spinner />
@@ -42,4 +42,6 @@ export default function Account(props: Props) {
       </Card>
     </div>
   );
-}
+};
+
+export default Account;

@@ -1,43 +1,26 @@
-import React from 'react';
-import './App.scss';
+import React, { FunctionComponent } from 'react';
+import './app.scss';
+import { useAuth } from './_utils/use-auth';
 import logo from './_assets/logo.svg';
-import useFetch from './_hooks/useFetch';
-import Account from './Account/Account';
-import Spinner from './Spinner/Spinner';
+import Accounts from './accounts/accounts';
+import Login from './login/login';
 
-interface State {
-  accounts: {
-    id: string;
-    description: string;
-    created: string;
-  }[];
-}
-
-function App() {
-  const { data, loading } = useFetch<State>(
-    `${process.env.REACT_APP_API_URL}/accounts`
-  );
-
-  const accounts =
-    data.accounts &&
-    data.accounts.map((account, key) => (
-      <Account key={key} id={account.id} title={`Account ${key + 1}`} />
-    ));
+const App: FunctionComponent<{}> = () => {
+  const { isAuthenticated, logout } = useAuth();
 
   return (
     <div className="app">
       <header>
         <img src={logo} className="logo" alt="logo" />
         <h1>My Money</h1>
+        {isAuthenticated ? <button onClick={logout}>logout</button> : null}
       </header>
-      <main>
-        <div className="accounts">{loading ? <Spinner /> : accounts}</div>
-      </main>
+      <main>{isAuthenticated ? <Accounts /> : <Login />}</main>
       <footer>
         <p>Environment: {process.env.NODE_ENV}</p>
       </footer>
     </div>
   );
-}
+};
 
 export default App;
