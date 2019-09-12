@@ -91,6 +91,8 @@ function useAuthProvider(): State {
     if (result.ok) {
       localStorage.removeItem(accessTokenKey);
       setIsAuthenticated(false);
+    } else {
+      throw new Error('Error: Failed to logout'); // @todo handle error in UI
     }
   }
 

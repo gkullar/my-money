@@ -21,13 +21,11 @@ const useFetch = <T>(url: string): State<T> => {
 
     const result = await response.json();
 
-    if (response.status === 401) {
+    // @todo handle error in UI
+    if (response.status !== 200) {
       localStorage.removeItem(accessTokenKey);
       window.location.href = '/';
     }
-
-    if (response.status !== 200)
-      throw new Error('Error: ' + response.statusText); // @todo handle error in UI
 
     setData(result);
     setLoading(false);
