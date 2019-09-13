@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import { useAuth } from '../_utils/use-auth';
+import Button from './button';
+import { useAuth } from '../utils/use-auth';
 
 const Login: FunctionComponent<{}> = () => {
   const { login } = useAuth();
@@ -7,7 +8,7 @@ const Login: FunctionComponent<{}> = () => {
   return (
     <div className="login">
       <p>
-        Please <button onClick={login}>login</button> to use My Money
+        Please <Button onClick={login}>login</Button> to use My Money
       </p>
     </div>
   );

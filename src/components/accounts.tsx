@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
-import './accounts.scss';
-import Account from './account/account';
-import useFetch from '../_utils/use-fetch';
-import Spinner from '../spinner/spinner';
+import styled from 'styled-components';
+import Account from './account';
+import Spinner from './spinner';
+import useFetch from '../utils/use-fetch';
 
 interface State {
   accounts: {
@@ -11,6 +11,19 @@ interface State {
     created: string;
   }[];
 }
+
+const StyledAccounts = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 100%;
+
+  ${Account} {
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+`;
 
 const Accounts: FunctionComponent<{}> = () => {
   const { data, loading } = useFetch<State>(
@@ -23,7 +36,7 @@ const Accounts: FunctionComponent<{}> = () => {
       <Account key={key} id={account.id} title={`Account ${key + 1}`} />
     ));
 
-  return <div className="accounts">{loading ? <Spinner /> : accounts}</div>;
+  return <StyledAccounts>{loading ? <Spinner /> : accounts}</StyledAccounts>;
 };
 
 export default Accounts;

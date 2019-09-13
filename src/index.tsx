@@ -1,12 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
+import { createGlobalStyle } from 'styled-components';
+import { Normalize } from 'styled-normalize';
 import AppProviders from './app-providers';
 import App from './app';
-import * as serviceWorker from './_utils/service-worker';
+import * as serviceWorker from './utils/service-worker';
+
+const GlobalStyle = createGlobalStyle`
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #14233c;
+  color: #fff;
+}
+`;
 
 ReactDOM.render(
   <AppProviders>
+    <Normalize />
+    <GlobalStyle />
     <App />
   </AppProviders>,
   document.getElementById('root')
