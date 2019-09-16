@@ -23,15 +23,6 @@ interface State {
   logout: () => void;
 }
 
-const authContext = createContext<State>({} as any);
-
-const useAuth = () => useContext(authContext);
-
-const AuthProvider: FunctionComponent<{}> = ({ children }) => {
-  const auth = useAuthProvider();
-  return <authContext.Provider value={auth}>{children}</authContext.Provider>;
-};
-
 function useAuthProvider(): State {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
     localStorage.getItem(accessTokenKey) ? true : false
@@ -96,5 +87,14 @@ function useAuthProvider(): State {
 
   return { isAuthenticated, login, logout };
 }
+
+const AuthContext = createContext<State>({} as any);
+
+const AuthProvider: FunctionComponent<{}> = ({ children }) => {
+  const auth = useAuthProvider();
+  return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
+};
+
+const useAuth = () => useContext(AuthContext);
 
 export { useAuth, AuthProvider };
