@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
-import logo from './assets/logo.svg';
-import background from './assets/background.jpg';
-import Accounts from './components/accounts';
-import Button from './components/button';
-import Login from './components/login';
-import { useAuth } from './utils/use-auth';
+import Accounts from './accounts';
+import Button from './button';
+import Login from './login';
+import background from '../assets/background.jpg';
+import logo from '../assets/logo.svg';
+import { useAuth } from '../utils/use-auth';
 
 const StyledApp = styled.div`
   display: flex;
