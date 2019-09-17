@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import Account from './account';
-import Permissions from './permissions';
 import Spinner from './spinner';
 import useFetch from '../utils/use-fetch';
 
@@ -27,11 +26,9 @@ const StyledAccounts = styled.div`
 `;
 
 const Accounts: FunctionComponent<{}> = () => {
-  const { data, loading, hasPermissions } = useFetch<State>(
+  const { data, loading } = useFetch<State>(
     `${process.env.REACT_APP_API_URL}/accounts`
   );
-
-  if (!hasPermissions) return <Permissions />;
 
   const accounts =
     data.accounts &&

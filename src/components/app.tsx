@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import Accounts from './accounts';
 import Button from './button';
-import Login from './login';
 import background from '../assets/background.jpg';
 import logo from '../assets/logo.svg';
 import { useAuth } from '../utils/use-auth';
@@ -47,14 +47,18 @@ const StyledApp = styled.div`
 const App: FunctionComponent<{}> = () => {
   const { isAuthenticated, logout } = useAuth();
 
+  if (!isAuthenticated) return <Redirect to="/login" />;
+
   return (
     <StyledApp>
       <header>
         <img src={logo} className="logo" alt="logo" />
         <h1>My Money</h1>
-        {isAuthenticated ? <Button onClick={logout}>logout</Button> : null}
+        <Button onClick={logout}>logout</Button>
       </header>
-      <main>{isAuthenticated ? <Accounts /> : <Login />}</main>
+      <main>
+        <Accounts />
+      </main>
       <footer>
         <p>Environment: {process.env.NODE_ENV}</p>
       </footer>
