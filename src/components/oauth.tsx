@@ -1,19 +1,8 @@
 import React, { FunctionComponent } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { Redirect } from 'react-router-dom';
-import { useAuth } from '../utils/use-auth';
-
-const blink = keyframes`
-0% {
-  opacity: 0.2;
-}
-20% {
-  opacity: 1;
-}
-100% {
-  opacity: 0.2;
-}
-`;
+import { useAuth } from '../hooks/use-auth';
+import { blink } from '../theme/animations';
 
 const StyledOAuth = styled.div`
   span {

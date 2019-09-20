@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import AccountDetail from './account-detail';
 import Card from './card';
 import Spinner from './spinner';
-import useFetch from '../utils/use-fetch';
+import useFetch from '../hooks/use-fetch';
 
 interface Props {
   id: string;
@@ -18,7 +18,7 @@ interface State {
   spend_today: number;
 }
 
-// @todo use dynamic values for spinner margin calc
+// @todo use dynamic values for spinner margin calc (default is 24px)
 const StyledAccount = styled.div`
   ${Card} {
     width: 320px;

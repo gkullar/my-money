@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import Button from './button';
-import { useAuth } from '../utils/use-auth';
+import { useAuth } from '../hooks/use-auth';
 
 const Login: FunctionComponent<{}> = () => {
   const { login } = useAuth();

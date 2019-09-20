@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import Account from './account';
 import Spinner from './spinner';
-import useFetch from '../utils/use-fetch';
+import useFetch from '../hooks/use-fetch';
 
 interface State {
   accounts: {

@@ -1,11 +1,13 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
+import { darken, rgba } from 'polished';
 import Button from './button';
+import { Props, withPalette } from './with-palette';
 import background from '../assets/background.jpg';
 import logo from '../assets/logo.svg';
-import { useAuth } from '../utils/use-auth';
+import { useAuth } from '../hooks/use-auth';
 
-const StyledLayout = styled.div`
+const StyledLayout = withPalette(styled.div<Props>`
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -28,7 +30,7 @@ const StyledLayout = styled.div`
 
   header,
   footer {
-    background: #14233c;
+    background: ${props => props.theme[props.palette].background};
     padding: 0 20px;
   }
 
@@ -38,9 +40,10 @@ const StyledLayout = styled.div`
     padding: 20px;
     background: url(${background}) no-repeat center center fixed;
     background-size: cover;
-    box-shadow: inset 0 0 0 2000px rgba(20, 35, 60, 0.8);
+    box-shadow: inset 0 0 0 2000px
+      ${props => rgba(darken(0.5, props.theme[props.palette].background), 0.8)};
   }
-`;
+`);
 
 const Layout: FunctionComponent<{}> = ({ children }) => {
   const { logout } = useAuth();

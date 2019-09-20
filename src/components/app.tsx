@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { Redirect } from 'react-router-dom';
 import Accounts from './accounts';
-import { useAuth } from '../utils/use-auth';
 import Layout from './layout';
+import { useAuth } from '../hooks/use-auth';
 
 const App: FunctionComponent<{}> = () => {
   const { isAuthenticated } = useAuth();

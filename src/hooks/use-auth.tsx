@@ -4,7 +4,7 @@ import React, {
   useState,
   FunctionComponent
 } from 'react';
-import uuid from './uuid';
+import uuid from '../utils/uuid';
 
 const uri = `${process.env.REACT_APP_PUBLIC_URL}/oauth/callback`;
 const accessTokenKey = `${process.env.REACT_APP_API_ACCESS_TOKEN_KEY}`;
