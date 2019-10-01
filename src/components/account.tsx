@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import AccountDetail from './account-detail';
 import Card from './card';
 import Spinner from './spinner';
+import { Props as PaletteProps, withPalette } from './with-palette';
 import useFetch from '../hooks/use-fetch';
+import { PaletteTypes } from '../theme/theme';
 
 interface Props {
   id: string;
-  title: string;
+  accountNumber: string;
   className?: string;
 }
 
@@ -42,14 +44,16 @@ const StyledAccount = styled.div`
   }
 `;
 
-const StyledAccountTitle = styled.h2`
+const StyledAccountTitle = withPalette(styled.h2<PaletteProps>`
   margin-top: 0;
   margin-bottom: 16px;
-`;
+  padding-bottom: 10px;
+  border-bottom: 1px solid ${props => props.theme[props.palette].borderColor};
+`);
 
 const AccountComponent: FunctionComponent<Props> = ({
   id,
-  title,
+  accountNumber,
   className
 }) => {
   const { data, loading } = useFetch<State>(
@@ -59,8 +63,10 @@ const AccountComponent: FunctionComponent<Props> = ({
   return (
     <StyledAccount className={className}>
       <Card>
-        <StyledAccountTitle>{title}</StyledAccountTitle>
-        <hr />
+        <StyledAccountTitle palette={PaletteTypes.Accent}>
+          <small>Account No. </small>
+          {accountNumber}
+        </StyledAccountTitle>
         {loading ? (
           <Spinner />
         ) : (

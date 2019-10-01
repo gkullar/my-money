@@ -3,27 +3,27 @@ import styled from 'styled-components';
 import Button from './button';
 import FullScreenBackground from './fullscreen-background';
 import { Props, withPalette } from './with-palette';
-import logo from '../assets/monzo-logo.svg';
+import logo from '../assets/logo.png';
 import { useAuth } from '../hooks/use-auth';
+import { PaletteTypes } from '../theme/theme';
 
 const Layout = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+
+  main {
+    height: 100%;
+  }
 `;
 
 const Header = withPalette(styled.header<Props>`
   display: flex;
   align-items: center;
+  color: ${props => props.theme[props.palette].text};
   background: ${props => props.theme[props.palette].background};
-  padding: 0 20px;
-
-  .logo {
-    transform: rotate(270deg);
-    height: 50px;
-    pointer-events: none;
-    margin-right: 10px;
-  }
+  border-bottom: 1px solid ${props => props.theme[props.palette].borderColor};
+  padding: 5px 20px;
 
   button {
     margin-left: auto;
@@ -31,7 +31,9 @@ const Header = withPalette(styled.header<Props>`
 `);
 
 const Footer = withPalette(styled.footer<Props>`
+  color: ${props => props.theme[props.palette].text};
   background: ${props => props.theme[props.palette].background};
+  border-top: 1px solid ${props => props.theme[props.palette].borderColor};
   padding: 0 20px;
 `);
 
@@ -43,20 +45,28 @@ const MainWrapper = styled(FullScreenBackground).attrs({
   padding: 20px;
 `;
 
+const Logo = styled.img.attrs({
+  src: logo,
+  alt: 'logo'
+})`
+  height: 60px;
+`;
+
 const AuthenticatedLayout: FunctionComponent<{}> = ({ children }) => {
   const { logout } = useAuth();
 
   return (
     <Layout>
       <Header>
-        <img src={logo} className="logo" alt="logo" />
-        <h1>My Money</h1>
-        <Button onClick={logout}>logout</Button>
+        <Logo />
+        <Button palette={PaletteTypes.Accent} onClick={logout}>
+          logout
+        </Button>
       </Header>
       <MainWrapper>
         <main>{children}</main>
       </MainWrapper>
-      <Footer>
+      <Footer palette={PaletteTypes.Accent}>
         <p>Environment: {process.env.NODE_ENV}</p>
       </Footer>
     </Layout>

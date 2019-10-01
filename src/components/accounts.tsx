@@ -3,10 +3,12 @@ import styled from 'styled-components';
 import Account from './account';
 import Spinner from './spinner';
 import useFetch from '../hooks/use-fetch';
+import { PaletteTypes } from '../theme/theme';
 
 interface State {
   accounts: {
     id: string;
+    account_number: string;
     description: string;
     created: string;
   }[];
@@ -33,10 +35,18 @@ const Accounts: FunctionComponent<{}> = () => {
   const accounts =
     data.accounts &&
     data.accounts.map((account, key) => (
-      <Account key={key} id={account.id} title={`Account ${key + 1}`} />
+      <Account
+        key={key}
+        id={account.id}
+        accountNumber={account.account_number}
+      />
     ));
 
-  return <StyledAccounts>{loading ? <Spinner /> : accounts}</StyledAccounts>;
+  return (
+    <StyledAccounts>
+      {loading ? <Spinner palette={PaletteTypes.Accent} /> : accounts}
+    </StyledAccounts>
+  );
 };
 
 export default Accounts;
