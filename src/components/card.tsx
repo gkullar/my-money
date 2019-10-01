@@ -11,7 +11,9 @@ const StyledCard = withPalette(styled.div<Props>`
   box-shadow: 18px 16px 22px -10px ${props => rgba(readableColor(props.theme[props.palette].background), 0.5)};
 `);
 
-const CardComponent: FunctionComponent<{}> = () => <StyledCard />;
+const CardComponent: FunctionComponent<Partial<Props>> = (
+  props: Partial<Props>
+) => <StyledCard {...props} />;
 
 const Card = styled(CardComponent)``;
 

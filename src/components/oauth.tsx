@@ -1,16 +1,21 @@
 import React, { FunctionComponent } from 'react';
-import styled from 'styled-components';
 import { Redirect } from 'react-router-dom';
+import styled from 'styled-components';
+import UnAuthenticatedLayout from './unauthenticated-layout';
 import { useAuth } from '../hooks/use-auth';
 import { blink } from '../theme/animations';
 
-const StyledOAuth = styled.div`
+const Heading = styled.h3`
+  margin-bottom: 0;
+
   span {
     animation: ${blink} infinite 1.4s;
   }
+
   span:nth-child(2) {
     animation-delay: 0.2s;
   }
+
   span:nth-child(3) {
     animation-delay: 0.4s;
   }
@@ -33,12 +38,14 @@ const OAuth: FunctionComponent<{}> = () => {
   if (isAuthenticated) return <Redirect to="/" />;
 
   return (
-    <StyledOAuth>
-      Authenticating
-      <span>.</span>
-      <span>.</span>
-      <span>.</span>
-    </StyledOAuth>
+    <UnAuthenticatedLayout>
+      <Heading>
+        Authenticating
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+      </Heading>
+    </UnAuthenticatedLayout>
   );
 };
 

@@ -24,11 +24,11 @@ export const themes: Themes = {
   light: {
     base: {
       text: '#1b1b1b',
-      background: '#eee'
+      background: '#fff'
     },
     accent: {
       text: '#fff',
-      background: '#28a2b9'
+      background: '#37414f'
     }
   },
   dark: {

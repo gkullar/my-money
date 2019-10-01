@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { Props as PaletteProps, withPalette } from './with-palette';
+import '../fonts/stylesheet.css';
 
 interface Props extends PaletteProps {
   theme: any;
@@ -12,9 +13,7 @@ body {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Lato', Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: ${props => props.theme[props.palette].background};
