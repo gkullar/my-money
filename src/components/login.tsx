@@ -32,7 +32,7 @@ const Login: FunctionComponent<{}> = () => {
     <UnAuthenticatedLayout>
       <StyledButton palette={PaletteTypes.Accent} onClick={login}>
         <ButtonIcon />
-        <ButtonText>Login</ButtonText>
+        <ButtonText>login</ButtonText>
       </StyledButton>
     </UnAuthenticatedLayout>
   );

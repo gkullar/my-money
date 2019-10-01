@@ -9,6 +9,7 @@ const Button = withPalette(styled.button<Props>`
   border-radius: 3px;
   border: none;
   padding: 5px 10px;
+  text-transform: capitalize;
   transition: background 0.3s linear;
 
   &:hover {
