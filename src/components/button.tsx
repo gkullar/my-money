@@ -7,7 +7,7 @@ const Button = withPalette(styled.button<Props>`
   color: ${props => props.theme[props.palette].text};
   font-weight: 600;
   border-radius: 3px;
-  border: none;
+  border: 1px solid ${props => props.theme[props.palette].borderColor};
   padding: 5px 10px;
   text-transform: capitalize;
   transition: background 0.3s linear;

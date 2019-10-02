@@ -16,11 +16,17 @@ export enum PaletteTypes {
 }
 
 export enum ThemeTypes {
-  Light,
-  Dark
+  Light = 'light',
+  Dark = 'dark'
 }
 
-export const themes: Themes = {
+export function getTheme(themeType: ThemeTypes): Palettes {
+  if (themeType === ThemeTypes.Dark) return themes.dark;
+
+  return themes.light;
+}
+
+const themes: Themes = {
   light: {
     base: {
       text: '#1b1b1b',
@@ -36,11 +42,13 @@ export const themes: Themes = {
   dark: {
     base: {
       text: '#fff',
-      background: '#14233C'
+      background: '#2d1d29',
+      borderColor: '#fff'
     },
     accent: {
-      text: '#fff',
-      background: '#28a2b9'
+      text: '#1b1b1b',
+      background: '#ccc',
+      borderColor: '#db0065'
     }
   }
 };

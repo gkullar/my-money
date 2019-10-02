@@ -5,7 +5,9 @@ import React, {
   FunctionComponent
 } from 'react';
 import { ThemeProvider as SCThemeProvider } from 'styled-components';
-import { themes, ThemeTypes } from '../theme/theme';
+import { ThemeTypes, getTheme } from '../theme/theme';
+
+const themeKey = `${process.env.REACT_APP_THEME_KEY}`;
 
 interface State {
   toggle: () => void;
@@ -13,12 +15,17 @@ interface State {
 }
 
 function useThemeProvider(): State {
-  const [themeType, setThemeType] = useState(ThemeTypes.Light);
+  const [themeType, setThemeType] = useState(
+    localStorage.getItem(themeKey)
+      ? (localStorage.getItem(themeKey) as ThemeTypes)
+      : ThemeTypes.Light
+  );
 
   const toggle = () => {
     const theme =
       themeType === ThemeTypes.Light ? ThemeTypes.Dark : ThemeTypes.Light;
     setThemeType(theme);
+    localStorage.setItem(themeKey, theme);
   };
 
   return { toggle, themeType };
@@ -28,8 +35,7 @@ const ThemeContext = createContext<State>({} as any);
 
 const ThemeProvider: FunctionComponent<{}> = ({ children }) => {
   const theme = useThemeProvider();
-  const selectedTheme =
-    theme.themeType === ThemeTypes.Light ? themes.light : themes.dark;
+  const selectedTheme = getTheme(theme.themeType);
 
   return (
     <ThemeContext.Provider value={theme}>

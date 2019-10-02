@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import Button from './button';
 import FullScreenBackground from './fullscreen-background';
+import ThemeToggle from './theme-toggle';
 import { Props, withPalette } from './with-palette';
 import logo from '../assets/logo.png';
 import { useAuth } from '../hooks/use-auth';
@@ -24,11 +25,15 @@ const Header = withPalette(styled.header<Props>`
   background: ${props => props.theme[props.palette].background};
   border-bottom: 1px solid ${props => props.theme[props.palette].borderColor};
   padding: 5px 20px;
-
-  button {
-    margin-left: auto;
-  }
 `);
+
+const HeaderActions = styled.div`
+  margin-left: auto;
+
+  button:first-of-type {
+    margin-right: 5px;
+  }
+`;
 
 const Footer = withPalette(styled.footer<Props>`
   color: ${props => props.theme[props.palette].text};
@@ -59,9 +64,12 @@ const AuthenticatedLayout: FunctionComponent<{}> = ({ children }) => {
     <Layout>
       <Header>
         <Logo />
-        <Button palette={PaletteTypes.Accent} onClick={logout}>
-          logout
-        </Button>
+        <HeaderActions>
+          <ThemeToggle />
+          <Button palette={PaletteTypes.Accent} onClick={logout}>
+            logout
+          </Button>
+        </HeaderActions>
       </Header>
       <MainWrapper>
         <main>{children}</main>
