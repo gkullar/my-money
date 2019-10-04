@@ -12,7 +12,7 @@ const Layout = styled.div`
 `;
 
 const ContentCard = styled(Card)`
-  width: 200px;
+  width: 240px;
   display: flex;
   flex-direction: column;
   align-items: center;

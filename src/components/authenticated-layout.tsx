@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, UIEvent, useState } from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
 import Button from './button';
@@ -15,7 +15,7 @@ const Layout = styled.div`
 
 const Header = WithPalette(styled.header<Props>`
   position: relative;
-  height: 50px;
+  height: 60px;
   display: flex;
   align-items: center;
   color: ${props => props.theme[props.palette].text};
@@ -44,35 +44,50 @@ const Footer = WithPalette(styled.footer<Props>`
 const Main = WithPalette(styled.main<Props>`
   flex: 1;
   overflow: auto;
-  padding: 80px 20px 20px;
+  padding: 60px 20px 20px;
   height: 100%;
   background: ${props => props.theme[props.palette].background};
 `);
 
+interface LogoProps extends Props {
+  contain: boolean;
+}
+
 const Logo = WithPalette(styled.img.attrs({
   src: logo,
   alt: 'logo'
-})<Props>`
+})<LogoProps>`
   position: absolute;
   top: 10px;
   height: 100px;
   background: ${props => props.theme[props.palette].background};
-  border: 2px solid ${props => props.theme[props.palette].background};
+  transition: position 0.4s linear, height 0.4s linear, top 0.4s linear;
+
+  ${props =>
+    props.contain &&
+    `
+    position: relative;
+    height: 55px;
+    top: 0;
+  `}
 `);
 
 const AuthenticatedLayout: FunctionComponent<{}> = ({ children }) => {
   const { logout } = useAuth();
+  const [scrolled, setScrolled] = useState(false);
+  const onScroll = (event: UIEvent) =>
+    setScrolled(event.currentTarget.scrollTop > 0);
 
   return (
     <Layout>
       <Header>
-        <Logo />
+        <Logo contain={scrolled} />
         <HeaderActions>
           <ThemeToggle />
           <Button onClick={logout}>logout</Button>
         </HeaderActions>
       </Header>
-      <Main>{children}</Main>
+      <Main onScroll={onScroll}>{children}</Main>
       <Footer>
         <p>Environment: {process.env.NODE_ENV}</p>
       </Footer>

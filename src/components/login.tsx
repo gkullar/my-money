@@ -30,7 +30,7 @@ const Login: FunctionComponent<{}> = () => {
 
   return (
     <UnAuthenticatedLayout>
-      <StyledButton palette={PaletteTypes.Accent} onClick={login}>
+      <StyledButton onClick={login}>
         <ButtonIcon />
         <ButtonText>login</ButtonText>
       </StyledButton>

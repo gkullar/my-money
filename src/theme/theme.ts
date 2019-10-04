@@ -10,6 +10,13 @@ export interface Themes {
   dark: Palettes;
 }
 
+export interface Breakpoints {
+  xs: number;
+  sm: number;
+  md: number;
+  lg: number;
+}
+
 export enum PaletteTypes {
   Base = 'base',
   Accent = 'accent'
@@ -51,4 +58,11 @@ const themes: Themes = {
       border: '#fff'
     }
   }
+};
+
+export const breakpoints: Breakpoints = {
+  lg: 1200,
+  md: 992,
+  sm: 768,
+  xs: 480
 };

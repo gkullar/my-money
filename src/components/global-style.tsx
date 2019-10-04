@@ -7,6 +7,14 @@ interface Props extends PaletteProps {
 }
 
 const GlobalStyle = createGlobalStyle<Props>`
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 html,
 body {
   height: 100%;

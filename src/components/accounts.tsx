@@ -4,6 +4,7 @@ import Account from './account';
 import AccountPlaceholder from './account-placeholder';
 import Spinner from './spinner';
 import useFetch from '../hooks/use-fetch';
+import { respondTo } from '../theme/mixins';
 
 interface State {
   accounts: {
@@ -23,8 +24,11 @@ const StyledAccounts = styled.div`
 `;
 
 const AccountWrapper = styled.div`
-  margin-right: 20px;
   margin-bottom: 20px;
+
+  ${respondTo.xs`
+    margin-right: 20px;
+  `}
 `;
 
 const Accounts: FunctionComponent<{}> = () => {
@@ -43,8 +47,8 @@ const Accounts: FunctionComponent<{}> = () => {
   const accountPlaceholders = Array(2)
     .fill({})
     .map((_, key) => (
-      <AccountWrapper key={key}>
-        <AccountPlaceholder></AccountPlaceholder>
+      <AccountWrapper key={'0' + key}>
+        <AccountPlaceholder />
       </AccountWrapper>
     ));
 
