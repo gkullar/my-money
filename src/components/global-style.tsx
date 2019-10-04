@@ -13,11 +13,12 @@ body {
 }
 
 body {
-  font-family: 'Lato', Arial, Helvetica, sans-serif;
+  font-family: 'Flama', Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: ${props => props.theme[props.palette].background};
   color: ${props => props.theme[props.palette].text};
+  font-size: 14px;
 }
 `;
 

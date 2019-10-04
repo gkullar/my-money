@@ -4,24 +4,20 @@ import Card from './card';
 import FullScreenBackground from './fullscreen-background';
 import logo from '../assets/logo.png';
 
-interface Props {
-  className?: string;
-}
-
 const Layout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+`;
 
-  ${Card} {
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
+const ContentCard = styled(Card)`
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 
   p {
     margin: 0 auto;
@@ -36,16 +32,13 @@ const Logo = styled.img.attrs({
   margin: 0 auto;
 `;
 
-const UnAuthenticatedLayout: FunctionComponent<{} & Partial<Props>> = ({
-  children,
-  className
-}) => (
+const UnAuthenticatedLayout: FunctionComponent<{}> = ({ children }) => (
   <FullScreenBackground>
-    <Layout className={className}>
-      <Card>
+    <Layout>
+      <ContentCard>
         <Logo />
         {children}
-      </Card>
+      </ContentCard>
     </Layout>
   </FullScreenBackground>
 );

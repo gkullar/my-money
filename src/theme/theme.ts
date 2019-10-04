@@ -31,24 +31,24 @@ const themes: Themes = {
     base: {
       text: '#1b1b1b',
       background: '#fff',
-      borderColor: '#1b1b1b'
+      border: '#37414f'
     },
     accent: {
       text: '#fff',
-      background: '#37414f',
-      borderColor: '#00dba3'
+      background: '#00dba3',
+      border: '#5f6b7d'
     }
   },
   dark: {
     base: {
       text: '#fff',
       background: '#2d1d29',
-      borderColor: '#fff'
+      border: '#db0065'
     },
     accent: {
       text: '#1b1b1b',
-      background: '#ccc',
-      borderColor: '#db0065'
+      background: '#00dba3',
+      border: '#fff'
     }
   }
 };

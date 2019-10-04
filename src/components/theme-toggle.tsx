@@ -1,14 +1,20 @@
 import React, { FunctionComponent } from 'react';
-import Button from './button';
+import ToggleButton from './toggle-button';
 import { useTheme } from '../hooks/use-theme';
 import { ThemeTypes } from '../theme/theme';
 
 const ThemeToggle: FunctionComponent<{}> = () => {
   const { themeType, toggle } = useTheme();
+  const checked = themeType === ThemeTypes.Dark ? true : false;
 
-  const text = themeType === ThemeTypes.Light ? 'Dark Theme' : 'Light Theme';
-
-  return <Button onClick={toggle}>{text}</Button>;
+  return (
+    <ToggleButton
+      clickAction={toggle}
+      leftText="light"
+      rightText="dark"
+      checked={checked}
+    />
+  );
 };
 
 export default ThemeToggle;

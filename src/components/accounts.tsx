@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import Account from './account';
+import AccountPlaceholder from './account-placeholder';
 import Spinner from './spinner';
 import useFetch from '../hooks/use-fetch';
-import { PaletteTypes } from '../theme/theme';
 
 interface State {
   accounts: {
@@ -20,11 +20,11 @@ const StyledAccounts = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   height: 100%;
+`;
 
-  ${Account} {
-    margin-right: 20px;
-    margin-bottom: 20px;
-  }
+const AccountWrapper = styled.div`
+  margin-right: 20px;
+  margin-bottom: 20px;
 `;
 
 const Accounts: FunctionComponent<{}> = () => {
@@ -35,16 +35,22 @@ const Accounts: FunctionComponent<{}> = () => {
   const accounts =
     data.accounts &&
     data.accounts.map((account, key) => (
-      <Account
-        key={key}
-        id={account.id}
-        accountNumber={account.account_number}
-      />
+      <AccountWrapper key={key}>
+        <Account id={account.id} accountNumber={account.account_number} />
+      </AccountWrapper>
+    ));
+
+  const accountPlaceholders = Array(2)
+    .fill({})
+    .map((_, key) => (
+      <AccountWrapper key={key}>
+        <AccountPlaceholder></AccountPlaceholder>
+      </AccountWrapper>
     ));
 
   return (
     <StyledAccounts>
-      {loading ? <Spinner palette={PaletteTypes.Accent} /> : accounts}
+      {loading ? <Spinner /> : accounts.concat(accountPlaceholders)}
     </StyledAccounts>
   );
 };

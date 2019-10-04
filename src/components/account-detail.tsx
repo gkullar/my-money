@@ -3,40 +3,55 @@ import styled from 'styled-components';
 
 interface Props {
   title: string;
-  value: number;
-  className?: string;
+  value: string;
+  bold?: boolean;
+  inline?: boolean;
 }
 
-const StyledAccountDetail = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+const Title = styled.div<Partial<Props>>`
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  ${props =>
+    !props.inline &&
+    `
+    margin-bottom: 5px;
+  `}
+
+  ${props =>
+    props.inline &&
+    `
+    display: inline-block;
+    margin-right: 15px;
+  `}
 `;
 
-const StyledAccountDetailTitle = styled.span`
-  font-weight: bold;
-  font-size: 14px;
-  margin-right: 5px;
+const Value = styled.div<Partial<Props>>`
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+
+  ${props =>
+    props.bold &&
+    `
+    font-weight: bold;
+    font-size: 1.5rem;
+  `}
+
+  ${props =>
+    props.inline &&
+    `
+    display: inline-block;
+  `}
 `;
 
-const StyledAccountDetailValue = styled.span`
-  font-size: 22px;
-`;
-
-const AccountDetailComponent: FunctionComponent<Props> = ({
-  title,
-  value,
-  className
-}) => (
-  <StyledAccountDetail className={className}>
-    <StyledAccountDetailTitle>{title}</StyledAccountDetailTitle>
-    <StyledAccountDetailValue>
-      <small>£</small>
-      {(value / 100).toFixed(2)}
-    </StyledAccountDetailValue>
-  </StyledAccountDetail>
+const AccountDetail: FunctionComponent<Props> = props => (
+  <div className="account-detail">
+    <Title inline={props.inline}>{props.title}</Title>
+    <Value inline={props.inline} bold={props.bold}>
+      {props.value}
+    </Value>
+  </div>
 );
-
-const AccountDetail = styled(AccountDetailComponent)``;
 
 export default AccountDetail;
