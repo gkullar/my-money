@@ -4,7 +4,6 @@ import Button from './button';
 import UnAuthenticatedLayout from './unauthenticated-layout';
 import monzoLogo from '../assets/monzo-logo.svg';
 import { useAuth } from '../hooks/use-auth';
-import { PaletteTypes } from '../theme/theme';
 
 const StyledButton = styled(Button)`
   padding: 8px 12px;
