@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
-import { Props as PaletteProps, withPalette } from './with-palette';
+import { Props as PaletteProps, WithPalette } from './with-palette';
 import { PaletteTypes } from '../theme/theme';
 
 interface Props {
@@ -19,7 +19,7 @@ const LayoutTop = styled.div`
   margin-bottom: 30px;
 `;
 
-const LayoutMiddle = withPalette(styled.div<PaletteProps>`
+const LayoutMiddle = WithPalette(styled.div<PaletteProps>`
   border-bottom: 1px solid ${props => props.theme[props.palette].text};
   padding-bottom: 20px;
   margin-bottom: 20px;

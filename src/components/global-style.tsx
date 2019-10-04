@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { Props as PaletteProps, withPalette } from './with-palette';
+import { Props as PaletteProps, WithPalette } from './with-palette';
 import '../fonts/stylesheet.css';
 
 interface Props extends PaletteProps {
@@ -22,4 +22,4 @@ body {
 }
 `;
 
-export default withPalette(GlobalStyle);
+export default WithPalette(GlobalStyle);

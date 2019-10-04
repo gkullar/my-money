@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { rgba } from 'polished';
-import { Props, withPalette } from './with-palette';
+import { Props, WithPalette } from './with-palette';
 
-const Button = withPalette(styled.button<Props>`
+const Button = WithPalette(styled.button<Props>`
   background: ${props => props.theme[props.palette].background};
   color: ${props => props.theme[props.palette].text};
   border-radius: 3px;

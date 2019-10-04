@@ -5,7 +5,7 @@ export interface Props {
   palette: PaletteTypes;
 }
 
-export const withPalette = <P extends Props>(
+export const WithPalette = <P extends Props>(
   WrappedComponent: ComponentType<P>
 ): ComponentType<Partial<P>> => (props: Partial<P>) => (
   <WrappedComponent

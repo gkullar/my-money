@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
-import { Props as PaletteProps, withPalette } from './with-palette';
+import { Props as PaletteProps, WithPalette } from './with-palette';
 
 interface Props extends PaletteProps {
   clickAction: () => void;
@@ -15,13 +15,13 @@ const StyledToggleButton = styled.div`
   align-items: center;
 `;
 
-const ToggleText = withPalette(styled.div<Props>`
+const ToggleText = WithPalette(styled.div<Props>`
   color: ${props => props.theme[props.palette].text};
   text-transform: capitalize;
   margin: 0 10px;
 `);
 
-const ToggleSwitch = withPalette(styled.label<Props>`
+const ToggleSwitch = WithPalette(styled.label<Props>`
   display: inline-block;
   height: 20px;
   width: 40px;
@@ -31,7 +31,7 @@ const ToggleSwitch = withPalette(styled.label<Props>`
 `);
 
 const ToggleSwitchArea = styled(
-  withPalette(styled.div<Props>`
+  WithPalette(styled.div<Props>`
     height: 20px;
     width: 20px;
     border-radius: 20px;

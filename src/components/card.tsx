@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { rgba } from 'polished';
-import { Props, withPalette } from './with-palette';
+import { Props, WithPalette } from './with-palette';
 
-const Card = withPalette(styled.div<Props>`
+const Card = WithPalette(styled.div<Props>`
   padding: 20px;
   position: relative;
   border-radius: 15px;

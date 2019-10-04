@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { Props as PaletteProps, withPalette } from './with-palette';
+import { Props as PaletteProps, WithPalette } from './with-palette';
 import { rotate } from '../theme/animations';
 
 interface Props extends PaletteProps {
   size?: string;
 }
 
-const Spinner = withPalette(styled.div<Props>`
+const Spinner = WithPalette(styled.div<Props>`
   display: inline-block;
   width: ${props => props.size};
   height: ${props => props.size};

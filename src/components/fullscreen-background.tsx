@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { darken, rgba } from 'polished';
-import { Props, withPalette } from './with-palette';
+import { Props, WithPalette } from './with-palette';
 import background from '../assets/background.jpg';
 
-const FullScreenBackground = withPalette(styled.div<Props>`
+const FullScreenBackground = WithPalette(styled.div<Props>`
   background: url(${background}) no-repeat center center fixed;
   background-size: cover;
   box-shadow: inset 0 0 0 2000px
