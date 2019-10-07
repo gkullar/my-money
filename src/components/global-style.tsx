@@ -28,6 +28,19 @@ body {
   color: ${props => props.theme[props.palette].text};
   font-size: 14px;
 }
+
+a {
+  color: ${props => props.theme[props.palette].text};
+  text-transform: uppercase;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:visited {
+    color: ${props => props.theme[props.palette].text};
+  }
+}
 `;
 
 export default WithPalette(GlobalStyle);
