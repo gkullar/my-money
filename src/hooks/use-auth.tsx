@@ -2,9 +2,12 @@ import React, {
   createContext,
   useContext,
   useState,
-  FunctionComponent
+  FunctionComponent,
+  useEffect
 } from 'react';
 import uuid from '../utils/uuid';
+import useTimeout from './use-timeout';
+import { useSnackbar } from './use-snackbar';
 
 const uri = `${process.env.REACT_APP_PUBLIC_URL}/oauth/callback`;
 const accessTokenKey = `${process.env.REACT_APP_API_ACCESS_TOKEN_KEY}`;
@@ -17,41 +20,60 @@ if (!localStorage.getItem(stateTokenKey))
 
 const stateToken = localStorage.getItem(stateTokenKey);
 
+interface Error {
+  message: string;
+}
+
 interface State {
   isAuthenticated: boolean;
-  authenticate: (code: string) => void;
+  authenticate: () => void;
   login: () => void;
   logout: () => void;
+  error: Error;
 }
 
 function useAuthProvider(): State {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
     localStorage.getItem(accessTokenKey) ? true : false
   );
+  const [error, setError] = useState<Error>({ message: '' });
 
-  async function authenticate(code: string) {
-    const data = new FormData();
-    data.append('grant_type', 'authorization_code');
-    data.append('client_id', clientId);
-    data.append('client_secret', clientSecret);
-    data.append('redirect_uri', uri);
-    data.append('code', code);
+  async function authenticate() {
+    const params = new URLSearchParams(window.location.search);
 
-    const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/oauth2/token`,
-      {
-        method: 'post',
-        body: data
+    if (params.has('code') && params.has('state')) {
+      if (params.get('state') !== stateToken) {
+        const message = 'State Token verification failed';
+        setError({ message });
+        return;
       }
-    );
 
-    const result = await response.json();
+      const data = new FormData();
+      data.append('grant_type', 'authorization_code');
+      data.append('client_id', clientId);
+      data.append('client_secret', clientSecret);
+      data.append('redirect_uri', uri);
+      data.append('code', params.get('code') as string);
 
-    if (response.status !== 200 || result.error)
-      throw new Error('Error: Failed Authentication'); // @todo handle error in UI
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/oauth2/token`,
+        {
+          method: 'post',
+          body: data
+        }
+      );
 
-    localStorage.setItem(accessTokenKey, result.access_token);
-    setIsAuthenticated(true);
+      const result = await response.json();
+
+      if (response.status !== 200 || result.error) {
+        const message = result.error ? result.message : 'Failed Authentication';
+        setError({ message });
+        return;
+      }
+
+      localStorage.setItem(accessTokenKey, result.access_token);
+      setIsAuthenticated(true);
+    }
   }
 
   function login() {
@@ -71,19 +93,32 @@ function useAuthProvider(): State {
 
     const result = await response.json();
 
-    if (!result.ok) throw new Error('Error: Failed to logout'); // @todo handle error in UI
+    if (!result.ok) {
+      const message = 'Error Logging out';
+      setError({ message });
+      return;
+    }
 
     localStorage.removeItem(accessTokenKey);
     setIsAuthenticated(false);
   }
 
-  return { isAuthenticated, authenticate, login, logout };
+  return { isAuthenticated, authenticate, login, logout, error };
 }
 
 const AuthContext = createContext<State>({} as any);
 
 const AuthProvider: FunctionComponent<{}> = ({ children }) => {
   const auth = useAuthProvider();
+
+  const snackbar = useSnackbar();
+
+  useEffect(() => {
+    if (auth.error.message.length) snackbar.open(auth.error.message);
+  }, [auth.error]);
+
+  useTimeout(() => snackbar.close(), 5000);
+
   return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 };
 

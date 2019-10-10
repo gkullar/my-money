@@ -12,6 +12,16 @@ export const blink = keyframes`
   }
 `;
 
+export const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
 export const rotate = keyframes`
   from {
     transform: rotate(0deg);

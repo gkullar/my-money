@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import UnAuthenticatedLayout from './unauthenticated-layout';
@@ -23,17 +23,10 @@ const Heading = styled.h3`
 
 const OAuth: FunctionComponent<{}> = () => {
   const { isAuthenticated, authenticate } = useAuth();
-  const params = new URLSearchParams(window.location.search);
-  const stateToken = localStorage.getItem(
-    `${process.env.REACT_APP_API_STATE_TOKEN_KEY}`
-  );
 
-  if (!isAuthenticated && params.has('code') && params.has('state')) {
-    if (params.get('state') !== stateToken)
-      throw new Error('Error: state token not matched'); // @todo handle error in UI
-
-    authenticate(params.get('code') as string);
-  }
+  useEffect(() => {
+    if (!isAuthenticated) authenticate();
+  }, [isAuthenticated]);
 
   if (isAuthenticated) return <Redirect to="/" />;
 

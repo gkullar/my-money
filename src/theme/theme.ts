@@ -38,24 +38,28 @@ const themes: Themes = {
     base: {
       text: '#1b1b1b',
       background: '#fff',
-      border: '#37414f'
+      border: '#37414f',
+      error: '#ff5248'
     },
     accent: {
       text: '#fff',
       background: '#00dba3',
-      border: '#5f6b7d'
+      border: '#5f6b7d',
+      error: '#e83c32'
     }
   },
   dark: {
     base: {
       text: '#fff',
       background: '#2d1d29',
-      border: '#db0065'
+      border: '#db0065',
+      error: '#e83c32'
     },
     accent: {
       text: '#1b1b1b',
       background: '#00dba3',
-      border: '#fff'
+      border: '#fff',
+      error: '#ff5248'
     }
   }
 };
