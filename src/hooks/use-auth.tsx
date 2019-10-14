@@ -1,9 +1,10 @@
 import React, {
+  FunctionComponent,
   createContext,
   useContext,
-  useState,
-  FunctionComponent,
-  useEffect
+  useEffect,
+  useRef,
+  useState
 } from 'react';
 import uuid from '../utils/uuid';
 import useTimeout from './use-timeout';
@@ -110,14 +111,20 @@ const AuthContext = createContext<State>({} as any);
 
 const AuthProvider: FunctionComponent<{}> = ({ children }) => {
   const auth = useAuthProvider();
-
   const snackbar = useSnackbar();
+  const snackbarRef = useRef(snackbar);
 
   useEffect(() => {
-    if (auth.error.message.length) snackbar.open(auth.error.message);
+    snackbarRef.current = snackbar;
+  });
+
+  useEffect(() => {
+    if (auth.error.message.length) snackbarRef.current.open(auth.error.message);
   }, [auth.error]);
 
-  useTimeout(() => snackbar.close(), 5000);
+  useTimeout(() => {
+    if (snackbarRef.current.show) snackbarRef.current.close();
+  }, 5000);
 
   return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 };

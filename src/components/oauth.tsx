@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent, useEffect, useRef } from 'react';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import UnAuthenticatedLayout from './unauthenticated-layout';
@@ -24,8 +24,14 @@ const Heading = styled.h3`
 const OAuth: FunctionComponent<{}> = () => {
   const { isAuthenticated, authenticate } = useAuth();
 
+  const authenticateRef = useRef(authenticate);
+
   useEffect(() => {
-    if (!isAuthenticated) authenticate();
+    authenticateRef.current = authenticate;
+  });
+
+  useEffect(() => {
+    if (!isAuthenticated) authenticateRef.current();
   }, [isAuthenticated]);
 
   if (isAuthenticated) return <Redirect to="/permissions" />;

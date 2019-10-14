@@ -4,7 +4,6 @@ import React, {
   useContext,
   useState
 } from 'react';
-import useTimeout from './use-timeout';
 import Snackbar from '../components/snackbar';
 
 interface State {
@@ -45,4 +44,4 @@ const SnackbarProvider: FunctionComponent<{}> = ({ children }) => {
 
 const useSnackbar = () => useContext(SnackbarContext);
 
-export { useSnackbar, SnackbarProvider, useTimeout };
+export { useSnackbar, SnackbarProvider };
