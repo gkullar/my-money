@@ -28,7 +28,7 @@ const OAuth: FunctionComponent<{}> = () => {
     if (!isAuthenticated) authenticate();
   }, [isAuthenticated]);
 
-  if (isAuthenticated) return <Redirect to="/" />;
+  if (isAuthenticated) return <Redirect to="/permissions" />;
 
   return (
     <UnAuthenticatedLayout>
