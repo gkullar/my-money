@@ -6,8 +6,7 @@ import React, {
 } from 'react';
 import { ThemeProvider as SCThemeProvider } from 'styled-components';
 import { ThemeTypes, getTheme } from '../theme/theme';
-
-const themeKey = `${process.env.REACT_APP_THEME_KEY}`;
+import { themeKey } from '../config';
 
 interface State {
   toggle: () => void;

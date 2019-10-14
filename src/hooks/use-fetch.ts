@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-
-const accessTokenKey = `${process.env.REACT_APP_API_ACCESS_TOKEN_KEY}`;
+import { accessTokenKey } from '../config';
 
 interface State<T> {
   data: T;

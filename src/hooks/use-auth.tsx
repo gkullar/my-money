@@ -9,17 +9,19 @@ import React, {
 import uuid from '../utils/uuid';
 import useTimeout from './use-timeout';
 import { useSnackbar } from './use-snackbar';
-
-const uri = `${process.env.REACT_APP_PUBLIC_URL}/oauth/callback`;
-const accessTokenKey = `${process.env.REACT_APP_API_ACCESS_TOKEN_KEY}`;
-const stateTokenKey = `${process.env.REACT_APP_API_STATE_TOKEN_KEY}`;
-const clientId = `${process.env.REACT_APP_API_CLIENT_ID}`;
-const clientSecret = `${process.env.REACT_APP_API_CLIENT_SECRET}`;
+import {
+  accessTokenKey,
+  clientId,
+  clientSecret,
+  stateTokenKey,
+  publicUrl
+} from '../config';
 
 if (!localStorage.getItem(stateTokenKey))
   localStorage.setItem(stateTokenKey, uuid());
 
 const stateToken = localStorage.getItem(stateTokenKey);
+const uri = `${publicUrl}/oauth/callback`;
 
 interface Error {
   message: string;
