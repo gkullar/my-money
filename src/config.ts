@@ -1,5 +1,7 @@
 export const publicUrl = process.env.REACT_APP_PUBLIC_URL as string;
 
+export const apiUrl = process.env.REACT_APP_API_URL as string;
+
 export const accessTokenKey = process.env
   .REACT_APP_API_ACCESS_TOKEN_KEY as string;
 

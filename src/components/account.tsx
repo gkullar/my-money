@@ -4,6 +4,7 @@ import AccountCard from './account-card';
 import AccountDetail from './account-detail';
 import AccountLayout from './account-layout';
 import Spinner from './spinner';
+import { apiUrl } from '../config';
 import useFetch from '../hooks/use-fetch';
 import { PaletteTypes } from '../theme/theme';
 import { toGBP } from '../utils/currency-formatter';
@@ -29,15 +30,15 @@ const AccountSpinner = styled(Spinner)`
 `;
 
 const Account: FunctionComponent<Props> = ({ id, accountNumber }) => {
-  const { data, loading } = useFetch<State>(
-    `${process.env.REACT_APP_API_URL}/balance?account_id=${id}`
+  const { data, loading, error } = useFetch<State>(
+    `${apiUrl}/balance?account_id=${id}`
   );
 
   return (
     <AccountCard palette={PaletteTypes.Accent}>
-      {loading ? (
-        <AccountSpinner palette={PaletteTypes.Accent} />
-      ) : (
+      {loading && <AccountSpinner palette={PaletteTypes.Accent} />}
+      {!loading && error && <p>There was an error retrieving account data</p>}
+      {!loading && !error && (
         <AccountLayout
           top={
             <AccountDetail

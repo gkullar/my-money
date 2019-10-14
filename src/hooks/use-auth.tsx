@@ -1,14 +1,13 @@
 import React, {
-  FunctionComponent,
   createContext,
   useContext,
   useEffect,
   useRef,
-  useState
+  useState,
+  FunctionComponent
 } from 'react';
-import uuid from '../utils/uuid';
-import useTimeout from './use-timeout';
 import { useSnackbar } from './use-snackbar';
+import useTimeout from './use-timeout';
 import {
   accessTokenKey,
   clientId,
@@ -16,6 +15,7 @@ import {
   stateTokenKey,
   publicUrl
 } from '../config';
+import uuid from '../utils/uuid';
 
 if (!localStorage.getItem(stateTokenKey))
   localStorage.setItem(stateTokenKey, uuid());

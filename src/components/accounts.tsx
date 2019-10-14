@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Account from './account';
 import AccountPlaceholder from './account-placeholder';
 import Spinner from './spinner';
+import { apiUrl } from '../config';
 import useFetch from '../hooks/use-fetch';
 import { respondTo } from '../theme/mixins';
 
@@ -32,9 +33,7 @@ const AccountWrapper = styled.div`
 `;
 
 const Accounts: FunctionComponent<{}> = () => {
-  const { data, loading } = useFetch<State>(
-    `${process.env.REACT_APP_API_URL}/accounts`
-  );
+  const { data, loading, error } = useFetch<State>(`${apiUrl}/accounts`);
 
   const accounts =
     data.accounts &&
@@ -54,7 +53,9 @@ const Accounts: FunctionComponent<{}> = () => {
 
   return (
     <StyledAccounts>
-      {loading ? <Spinner /> : accounts.concat(accountPlaceholders)}
+      {loading && <Spinner />}
+      {!loading && error && <p>There was an error retrieving accounts data</p>}
+      {!loading && !error && accounts.concat(accountPlaceholders)}
     </StyledAccounts>
   );
 };
