@@ -13,6 +13,8 @@ const useFetch = <T>(url: string): State<T> => {
   const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
+    let subscribed = true;
+
     async function fetchUrl() {
       const response = await fetch(url, {
         method: 'get',
@@ -20,8 +22,6 @@ const useFetch = <T>(url: string): State<T> => {
           Authorization: `Bearer ${localStorage.getItem(accessTokenKey)}`
         })
       });
-
-      const result = await response.json();
 
       if (response.status === 401) {
         localStorage.removeItem(accessTokenKey);
@@ -32,13 +32,18 @@ const useFetch = <T>(url: string): State<T> => {
         setLoading(false);
         setError(true);
       } else {
+        const result = await response.json();
         setData(result);
         setLoading(false);
         setError(false);
       }
     }
 
-    fetchUrl();
+    if (subscribed && url) fetchUrl();
+
+    return () => {
+      subscribed = false;
+    };
   }, [url]);
 
   return { data, loading, error };

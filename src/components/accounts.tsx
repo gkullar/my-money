@@ -55,7 +55,7 @@ const Accounts: FunctionComponent<{}> = () => {
     <StyledAccounts>
       {loading && <Spinner />}
       {!loading && error && <p>There was an error retrieving accounts data</p>}
-      {!loading && !error && accounts.concat(accountPlaceholders)}
+      {!loading && !error && Array().concat(accounts, accountPlaceholders)}
     </StyledAccounts>
   );
 };

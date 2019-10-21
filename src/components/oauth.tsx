@@ -23,11 +23,13 @@ const Heading = styled.h3`
 
 const OAuth: FunctionComponent<{}> = () => {
   const { isAuthenticated, authenticate } = useAuth();
-
-  const authenticateRef = useRef(authenticate);
+  const authenticateRef = useRef<any>(null);
 
   useEffect(() => {
     authenticateRef.current = authenticate;
+    return () => {
+      authenticateRef.current = null;
+    };
   });
 
   useEffect(() => {

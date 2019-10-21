@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Props as PaletteProps, WithPalette } from './with-palette';
 import { PaletteTypes } from '../theme/theme';
 
+// @todo add types
 interface Props {
   top: any;
   middle: any;

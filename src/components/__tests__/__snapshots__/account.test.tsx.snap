@@ -1,0 +1,212 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Account should render account details if no error 1`] = `
+.c1 {
+  padding: 20px;
+  position: relative;
+  border-radius: 15px;
+  color: #fff;
+  background: rgba(0,219,163,0.9);
+  box-shadow: 8px 8px 4px -4px rgba(95,107,125,0.4);
+}
+
+.c0 {
+  width: 310px;
+  height: 225px;
+}
+
+.c4 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.c7 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.c5 {
+  font-size: 1.3rem;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  display: inline-block;
+}
+
+.c8 {
+  font-size: 1.3rem;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.c11 {
+  font-size: 1.3rem;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+.c2 {
+  padding: 0px 5px;
+}
+
+.c3 {
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+
+.c6 {
+  border-bottom: 1px solid #fff;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c10 {
+  width: 50%;
+}
+
+@media (min-width:30em) {
+  .c0 {
+    width: 350px;
+  }
+}
+
+<div
+  class="c0 c1"
+>
+  <div
+    class="c2"
+  >
+    <div
+      class="c3"
+    >
+      <div
+        class="account-detail"
+      >
+        <div
+          class="c4"
+        >
+          Account No
+        </div>
+        <div
+          class="c5"
+        >
+          TestAccountNo
+        </div>
+      </div>
+    </div>
+    <div
+      class="c6"
+    >
+      <div
+        class="account-detail"
+      >
+        <div
+          class="c7"
+        >
+          Balance
+        </div>
+        <div
+          class="c8"
+        >
+          £1.00
+        </div>
+      </div>
+    </div>
+    <div
+      class="c9"
+    >
+      <div
+        class="c10"
+      >
+        <div
+          class="account-detail"
+        >
+          <div
+            class="c7"
+          >
+            Available
+          </div>
+          <div
+            class="c11"
+          >
+            £1.00
+          </div>
+        </div>
+      </div>
+      <div
+        class="c10"
+      >
+        <div
+          class="account-detail"
+        >
+          <div
+            class="c7"
+          >
+            Todays Spend
+          </div>
+          <div
+            class="c11"
+          >
+            £0.00
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Account should render an error message if error 1`] = `
+.c1 {
+  padding: 20px;
+  position: relative;
+  border-radius: 15px;
+  color: #fff;
+  background: rgba(0,219,163,0.9);
+  box-shadow: 8px 8px 4px -4px rgba(95,107,125,0.4);
+}
+
+.c0 {
+  width: 310px;
+  height: 225px;
+}
+
+@media (min-width:30em) {
+  .c0 {
+    width: 350px;
+  }
+}
+
+<div
+  class="c0 c1"
+>
+  <p>
+    There was an error retrieving account data
+  </p>
+</div>
+`;

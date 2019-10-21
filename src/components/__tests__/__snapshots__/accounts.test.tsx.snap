@@ -1,0 +1,285 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accounts should render accounts if no error 1`] = `
+.c15 {
+  padding: 20px;
+  position: relative;
+  border-radius: 15px;
+  color: #1b1b1b;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 8px 8px 4px -4px rgba(55,65,79,0.4);
+}
+
+.c3 {
+  padding: 20px;
+  position: relative;
+  border-radius: 15px;
+  color: #fff;
+  background: rgba(0,219,163,0.9);
+  box-shadow: 8px 8px 4px -4px rgba(95,107,125,0.4);
+}
+
+.c2 {
+  width: 310px;
+  height: 225px;
+}
+
+.c6 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.c9 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.c7 {
+  font-size: 1.3rem;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  display: inline-block;
+}
+
+.c10 {
+  font-size: 1.3rem;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.c13 {
+  font-size: 1.3rem;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+.c4 {
+  padding: 0px 5px;
+}
+
+.c5 {
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+
+.c8 {
+  border-bottom: 1px solid #fff;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c12 {
+  width: 50%;
+}
+
+.c14 {
+  width: 310px;
+  height: 225px;
+  background: rgba(0,0,0,0.1);
+  box-shadow: none;
+  border: 2px dashed rgba(0,0,0,0.3);
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.c1 {
+  margin-bottom: 20px;
+}
+
+@media (min-width:30em) {
+  .c2 {
+    width: 350px;
+  }
+}
+
+@media (min-width:30em) {
+  .c14 {
+    width: 350px;
+  }
+}
+
+@media (min-width:30em) {
+  .c1 {
+    margin-right: 20px;
+  }
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 c3"
+    >
+      <div
+        class="c4"
+      >
+        <div
+          class="c5"
+        >
+          <div
+            class="account-detail"
+          >
+            <div
+              class="c6"
+            >
+              Account No
+            </div>
+            <div
+              class="c7"
+            >
+              TestAccountNo
+            </div>
+          </div>
+        </div>
+        <div
+          class="c8"
+        >
+          <div
+            class="account-detail"
+          >
+            <div
+              class="c9"
+            >
+              Balance
+            </div>
+            <div
+              class="c10"
+            >
+              £NaN
+            </div>
+          </div>
+        </div>
+        <div
+          class="c11"
+        >
+          <div
+            class="c12"
+          >
+            <div
+              class="account-detail"
+            >
+              <div
+                class="c9"
+              >
+                Available
+              </div>
+              <div
+                class="c13"
+              >
+                £NaN
+              </div>
+            </div>
+          </div>
+          <div
+            class="c12"
+          >
+            <div
+              class="account-detail"
+            >
+              <div
+                class="c9"
+              >
+                Todays Spend
+              </div>
+              <div
+                class="c13"
+              >
+                £NaN
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="c1"
+  >
+    <div
+      class="c14 c15"
+    />
+  </div>
+  <div
+    class="c1"
+  >
+    <div
+      class="c14 c15"
+    />
+  </div>
+</div>
+`;
+
+exports[`Accounts should render an error message if error 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+<div
+  class="c0"
+>
+  <p>
+    There was an error retrieving accounts data
+  </p>
+</div>
+`;

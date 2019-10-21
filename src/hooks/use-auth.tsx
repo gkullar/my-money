@@ -114,10 +114,13 @@ const AuthContext = createContext<State>({} as any);
 const AuthProvider: FunctionComponent<{}> = ({ children }) => {
   const auth = useAuthProvider();
   const snackbar = useSnackbar();
-  const snackbarRef = useRef(snackbar);
+  const snackbarRef = useRef<any>(null);
 
   useEffect(() => {
     snackbarRef.current = snackbar;
+    return () => {
+      snackbarRef.current = null;
+    };
   });
 
   useEffect(() => {

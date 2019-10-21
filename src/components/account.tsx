@@ -17,8 +17,8 @@ interface Props {
 interface State {
   balance: number;
   total_balance: number;
-  currency: string;
   spend_today: number;
+  currency?: string;
 }
 
 const AccountSpinner = styled(Spinner)`
