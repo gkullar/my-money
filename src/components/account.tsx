@@ -1,4 +1,5 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import AccountCard from './account-card';
 import AccountDetail from './account-detail';
@@ -33,9 +34,15 @@ const Account: FunctionComponent<Props> = ({ id, accountNumber }) => {
   const { data, loading, error } = useFetch<State>(
     `${apiUrl}/balance?account_id=${id}`
   );
+  const [isRedirect, setRedirect] = useState(false);
+  const handleClick = () => setRedirect(true);
 
   return (
-    <AccountCard palette={PaletteTypes.Accent}>
+    <AccountCard
+      palette={PaletteTypes.Accent}
+      isLink={true}
+      onClick={handleClick}
+    >
       {loading && <AccountSpinner palette={PaletteTypes.Accent} />}
       {!loading && error && <p>There was an error retrieving account data</p>}
       {!loading && !error && (
@@ -68,6 +75,7 @@ const Account: FunctionComponent<Props> = ({ id, accountNumber }) => {
           }
         />
       )}
+      {isRedirect && <Redirect to={`/accounts/${id}`} />}
     </AccountCard>
   );
 };

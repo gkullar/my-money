@@ -9,11 +9,11 @@ import Permissions from './components/permissions';
 const Routing: FunctionComponent<{}> = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={App} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/permissions" component={Permissions} />
-      <Route exact path="/oauth/callback" component={OAuth} />
-      <Route path="*" component={NotFound} />
+      <Route path="/login" component={Login} />
+      <Route path="/not-found" component={NotFound} />
+      <Route path="/oauth/callback" component={OAuth} />
+      <Route path="/permissions" component={Permissions} />
+      <Route path="/" component={App} />
     </Switch>
   </BrowserRouter>
 );

@@ -31,3 +31,13 @@ export const rotate = keyframes`
     transform: rotate(360deg);
   }
 `;
+
+export const leftToRight = keyframes`
+  from {
+    transform: translate(-100%);
+  }
+
+  to {
+    transform: translate(200%);
+  }
+`;
